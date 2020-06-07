@@ -1,0 +1,38 @@
+.spacer {
+	flex: 1;
+}
+.toolbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	background-color: #1976d2;
+	color: white;
+	font-weight: 600;
+	a {
+        color: white;
+		margin: 0 16px;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+.content {
+	display: flex;
+	padding: 0 35px;
+	flex-direction: column;
+    align-items: center;
+}
+
+.device-cap {
+    display: flex;
+    justify-content: flex-end;
+    padding: 80px 40px 20px 30px;
+    height: 140px;
+    button {
+        margin: 0px 10px
+    }
+}

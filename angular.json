@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "devicelist"
+    }
+  },
+  "defaultProject": "devicelist",
+  "cli": {
+    "analytics": false
+  }
 }

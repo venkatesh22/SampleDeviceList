@@ -1,0 +1,47 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <div class="spacer"></div>
+    <span>Device List</span>
+    <div class="spacer"></div>
+    <a href="#" (click)="logOut()">
+        <span>Logout</span>
+    </a>
+</div>
+
+
+<div class="device-cap">
+    <button type="button" *ngIf="showReboot" class="btn btn-primary">Reboot</button>
+    <button type="button" *ngIf="showShutDown" class="btn btn-secondary">Shutdown</button>
+    <button type="button" *ngIf="showFirmware" class="btn btn-success">Firmware</button>
+    <button type="button" *ngIf="showConfig" class="btn btn-danger">Config</button>
+</div>
+
+<div class="content" role="main">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th><input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"/></th>
+                <th>Device Id</th>
+                <th>Device Name</th>
+                <th>Serial Number</th>
+                <th>Reboot</th>
+                <th>Shutdown</th>
+                <th>Firmware</th>
+                <th>Config</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let device of deviceList">
+                <td><input type="checkbox" [(ngModel)]="device.selected" (change)="selectDevice()"/></td>
+                <td>{{device.device_id}}</td>
+                <td>{{device.device_name}}</td>
+                <td>{{device.serial_num}}</td>
+                <td>{{showFamily(device, 'reboot')}}</td>
+                <td>{{showFamily(device, 'shutdown')}}</td>
+                <td>{{showFamily(device, 'firmware')}}</td>
+                <td>{{showFamily(device, 'config')}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

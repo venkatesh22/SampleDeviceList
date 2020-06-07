@@ -1,0 +1,27 @@
+<div class="text-center main">
+  <form class="form-signin" #logInForm="ngForm" (submit)="signIn(userName.value, password.value)" appCustomvalidation>
+    <div role="alert" class="alert alert-danger" *ngIf="isInvalid"> Username and password is wrong </div>
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input type="text" id="inputEmail" #userName="ngModel" required class="form-control" name="username" ngModel placeholder="Username"
+      required autofocus>
+
+    <div *ngIf="(logInForm.controls?.username?.dirty && logInForm.controls?.username?.touched)">
+      <div class="alert alert-danger" *ngIf="(logInForm.controls?.username?.errors || logInForm.errors.username.message)">
+        <p *ngIf="logInForm.errors.username.message">{{logInForm.errors.username.message}}</p>
+      </div>
+    </div>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" #password="ngModel" required name="password" class="form-control" ngModel placeholder="Password"
+      required>
+
+    <div *ngIf="(logInForm.controls?.password?.dirty && logInForm.controls?.password?.touched)">
+      <div class="alert alert-danger" *ngIf="(logInForm.controls?.password?.errors || logInForm.errors.password.message)">
+        <p *ngIf="logInForm.errors.password.message">{{logInForm.errors.password.message}}</p>
+      </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="(logInForm.controls?.username?.errors || logInForm.errors?.username.message) || (logInForm.controls?.password?.errors || logInForm.errors?.password.message)">Sign in</button>
+  </form>
+</div>
